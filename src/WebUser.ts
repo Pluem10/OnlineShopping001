@@ -1,17 +1,16 @@
 import { UserState } from './UserState';
-
 export class WebUser {
     private login_id: string;
     private password: string;
     private state: UserState;
 
-    constructor(login_id: string, password: string, state: UserState) {
+    constructor(login_id: string, password: string) {
         this.login_id = login_id;
         this.password = password;
-        this.state = state; 
+        this.state = UserState.NEW;
     }
 
-    public getLogin_id(): string {
+    public getLoginId(): string {
         return this.login_id;
     }
 
@@ -27,7 +26,11 @@ export class WebUser {
         return this.state;
     }
 
-    public setState(state: UserState): void { 
+    public setState(state: UserState): void {
         this.state = state;
+    }
+
+    public toString(): string {
+        return `Login ID: ${this.login_id}, Password: ${this.password}, State: ${this.state}`;
     }
 }
