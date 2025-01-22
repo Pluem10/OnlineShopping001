@@ -1,16 +1,24 @@
+import { Customer } from "./Customer";
+import { Order } from './Order';
+import { Payment } from './Payment';
+import { Product } from './Product';
+import { ShoppingCart } from './ShoppingCart';
 export class Account {
+    private payments:Payment[] = []
+    private orders: Order[] = []
     private id: string;
     private billing_address: string;
     private is_closed: boolean;
-    private open: Date;
-    private closed: Date | null;    
+    private open: string;
+    private closed: string;    
 
-    constructor(id: string, billing_address: string) {
+    constructor(id: string, billing_address: string,is_closed:boolean,open:string,closed:string) {
+    
         this.id = id;
         this.billing_address = billing_address;
-        this.is_closed = false;
-        this.open = new Date();
-        this.closed = null;
+        this.is_closed = is_closed;
+        this.open = open;
+        this.closed = closed;
     }
 
     public getId(): string {
@@ -32,15 +40,27 @@ export class Account {
     public setIs_closed(is_closed: boolean): void {
         this.is_closed = is_closed;
         if (is_closed) {
-            this.closed = new Date();
+            this.closed 
         }
     }
 
-    public getOpen(): Date {
+    public getOpen(): string {
         return this.open;
     }
 
-    public getClosed(): Date | null {    
+    public getClosed(): string {    
         return this.closed;
+    }
+    public addOrder(order:Order):void{
+        this.orders.push(order)
+    }
+    public addPayment(payments:Payment):void{
+        this.payments.push(payments)
+    }
+    public getPayment():Payment[]{
+          return this.payments
+    }
+    public getOrders():Order[]{
+        return this.orders
     }
 }

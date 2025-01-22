@@ -5,6 +5,7 @@ import { Product } from './Product';
 import { Order } from "./Order";
 import { LineItem } from './LineItem';
 import { ShoppingCart } from "./ShoppingCart";
+import { Account } from './Account';
 
 console.log("############# สินค้าเครื่องเขียน #############");
 const product1 = new Product(`001`, `ดินสอ`, `คุณปลื้ม`);
@@ -25,11 +26,15 @@ const User2 = new WebUser(`002`, `9652055225`,);
 console.log(User1.toString());
 console.log(User2.toString());
 
+console.log("############# Web Users #############");
+const Account1 = new Account("1","Nakhonpathom",false,"25/01/2568","open");
+console.log(Account1.toString());
+
 console.log("############# Customers #############");
 
 // สร้าง Customer 2 คน
-const Customer1 = new Customer(`001`, `Nakhon Pathom`, `0878796542`, `SatuNaja001@mail.com`, User1);
-const Customer2 = new Customer(`002`, `Bangkok`, `0885893541`, `Makamaka002@mail.com`, User2);
+const Customer1 = new Customer(Account1,`001`, `Nakhon Pathom`, `0878796542`, `SatuNaja001@mail.com`, User1);
+const Customer2 = new Customer(Account1,`002`, `Bangkok`, `0885893541`, `Makamaka002@mail.com`, User2);
 
 console.log(Customer1.toString());
 console.log(Customer2.toString());

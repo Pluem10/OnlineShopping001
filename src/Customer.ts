@@ -1,5 +1,7 @@
 import { WebUser } from './WebUser';
+import { Account } from './Account';
 export class Customer {
+    private account : Account
     private webUser : WebUser
     private id: string
     private address:string
@@ -7,7 +9,8 @@ export class Customer {
     private email:string
 
 
-    constructor(id:string,address:string,phone:string,email:string,webUser:WebUser){
+    constructor(account:Account,id:string,address:string,phone:string,email:string,webUser:WebUser){
+        this.account = account
         this.id = id
         this.address  = address
         this.phone  = phone 

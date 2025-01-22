@@ -1,11 +1,23 @@
+import { LineItem } from './LineItem';
 export class ShoppingCart {
-    private created: Date;
+    private created: string;
+    private lineItem:LineItem[]=[]
 
-    constructor() {
-        this.created = new Date();
+    constructor(created:string) {
+        this.created = created;
     }
 
-    public getCreated(): Date {
+    public getCreated(): string {
         return this.created;
+    }
+    public getlineItems():LineItem[]{
+        return this.lineItem
+    }
+    public addLineItem(lineItem:LineItem):void{
+        this.lineItem.push(lineItem)
+
+    }
+    public toString():string{
+        return `Shopping[Create : ${this.created} Lineitem[${this.lineItem.toString()}]]`
     }
 }
